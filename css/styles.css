@@ -1,0 +1,145 @@
+/* TODO: Implementa un reset básico */
+* {
+  margin: 0; /* Elimina márgenes por defecto del navegador */
+  padding: 0; /* Remueve márgenes y padding predeterminados */
+  box-sizing: border-box; /* Configura box-sizing: border-box */
+}
+
+/* TODO: Configura el html */
+html {
+  font-size: 100%; /* font-size debe ser 100% para accesibilidad */
+}
+
+/* TODO: Estilos base del body */
+body {
+  font-family:
+    Arial, Helvetica, sans-serif; /* font-family con fuentes del sistema */
+  font-size: 1rem; /* font-size en rem */
+  color: var(--color-texto); /* color de texto */
+  background-color: var(--color-fondo-pagina); /* background-color */
+  line-height: 1.6; /* line-height apropiado */
+}
+
+/* TODO: Define variables usando HSL */
+:root {
+  /* Color primario base usando HSL */
+  --color-primario: hsl(220, 80%, 50%);
+  /* Variación clara del color primario */
+  --color-primario-claro: hsl(220, 80%, 80%);
+  /* Variación oscura del color primario */
+  --color-primario-oscuro: hsl(220, 80%, 30%);
+
+  /* Colores de texto y fondo */
+  --color-texto: hsl(240, 2%, 10%);
+  --color-fondo-tarjeta: hsl(210, 40%, 95%);
+  --color-fondo-pagina: hsl(0, 0%, 100%); /* Fondo claro */
+  --color-footer: hsl(210, 20%, 20%); /* Texto oscuro */
+  --sombra: 0 10px 20px hsla(210, 20%, 20%, 0.15); /* Sombra suave */
+  /* Espaciado */
+}
+
+/* TODO: Estiliza el header usando Flexbox */
+.header {
+  background-color: var(--color-primario); /* Fondo azul */
+  color: var(--color-fondo-tarjeta); /* Texto blanco */
+  padding: 2rem 1rem; /* Espaciado interno */
+
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  text-align: center; /* Centra el texto */
+}
+
+.header-conetido {
+  max-width: 00px; /* Limita el ancho máximo */
+}
+
+.titulo-principal {
+  font-size: 2rem; /* Tamaño grande */
+  margin-bottom: 0.5rem; /* Espacio inferior */
+}
+
+.descripcion {
+  font-size: 1.1rem; /* Tamaño ligeramente mayor al normal */
+}
+
+/* Contenedor principal */
+.contenedor {
+  width: 90%; /* Ocupa 90% del ancho */
+  max-width: 1200px; /* Máximo ancho en pantallas grandes */
+  margin: 2rem auto; /* Centrado horizontal automático */
+}
+
+/* Implementa Grid para la galería */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Crea 3 columnas iguales (1fr = 1 fracción del espacio disponible) */
+  gap: 1.5rem; /*Espacio entre columnas y filas*/
+  justify-items: center;
+}
+
+/* Estiliza las tarjetas */
+.foto-tarjeta {
+  background-color: var(--color-fondo-tarjeta); /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Evita que la imagen sobresalga */
+  box-shadow: var(--sombra); /* Aplica sombra definida en variable */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* Hace que las animaciones sean suaves */
+}
+
+.foto-tarjeta img {
+  width: 100%; /* Imagen ocupa todo el ancho */
+  display: block; /* Elimina espacio inferior de imágenes inline */
+}
+
+.foto-info {
+  padding: 1rem; /* Espaciado interno */
+}
+
+.foto-titulo {
+  font-size: 1.1rem; /* Tamaño del título */
+  margin-bottom: 0.5rem; /*Espacio inferior*/
+}
+
+.foto-descripcion {
+  font-size: 0.9rem; /* Texto más pequeño */
+  color: hsl(210, 10%, 40%); /* Gris oscuro */
+}
+
+.footer {
+  background-color: var(--color-footer); /* Fondo oscuro */
+  color: var(--color-fondo-tarjeta); /* Texto blanco */
+  text-align: center; /*Centrado*/
+  padding: 1rem; /*Espaciado interno*/
+  margin-top: 2rem; /* Separación superior */
+  font-size: 0.9rem; /* Texto más pequeño */
+}
+
+/* Efecto en hover */
+.foto-tarjeta:hover {
+  transform: translate(-5px); /* Eleva la tarjeta hacia arriba */
+  box-shadow: 0 15px 25px var(--color-primario-oscuro);
+}
+
+/* Tablets - 2 columnas  */
+@media (max-width: 900px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas */
+  }
+}
+
+/* Móviles: máximo 600px */
+@media (max-width: 600px) {
+  .galeria {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+
+  .titulo-principal {
+    font-size: 1.5rem; /* Reduce tamaño del título en pantallas pequeñas */
+  }
+}
